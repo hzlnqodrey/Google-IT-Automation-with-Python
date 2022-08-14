@@ -1,5 +1,4 @@
 import enum
-import random
 
 teams = ["Human", "Dragon", "Slave", "Unicorn"]
 
@@ -1674,3 +1673,948 @@ print(count_letters("Math is fun! 2+2=4"))
 
 print(count_letters("This is a sentence."))
 # Should be {'t': 2, 'h': 1, 'i': 2, 's': 3, 'a': 1, 'e': 3, 'n': 2, 'c': 1}
+
+############################################################################
+
+
+# OOP
+
+dir("") # to check attributes and method inside the type
+
+# >>> dir("")
+# ['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'capitalize', 'casefold', 'center', 'count', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'format_map', 'index', 'isalnum', 'isalpha', 'isascii', 'isdecimal', 'isdigit', 'isidentifier', 'islower', 'isnumeric', 'isprintable', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'maketrans', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
+# >>> dir(8)
+# ['__abs__', '__add__', '__and__', '__bool__', '__ceil__', '__class__', '__delattr__', '__dir__', '__divmod__', '__doc__', '__eq__', '__float__', '__floor__', '__floordiv__', '__format__', '__ge__', '__getattribute__', '__getnewargs__', '__gt__', '__hash__', '__index__', '__init__', '__init_subclass__', '__int__', '__invert__', '__le__', '__lshift__', '__lt__', '__mod__', '__mul__', '__ne__', '__neg__', '__new__', '__or__', '__pos__', '__pow__', '__radd__', '__rand__', '__rdivmod__', '__reduce__', '__reduce_ex__', '__repr__', '__rfloordiv__', '__rlshift__', '__rmod__', '__rmul__', '__ror__', '__round__', '__rpow__', '__rrshift__', '__rshift__', '__rsub__', '__rtruediv__', '__rxor__', '__setattr__', '__sizeof__', '__str__', '__sub__', '__subclasshook__', '__truediv__', '__trunc__', '__xor__', 'as_integer_ratio', 'bit_length', 'conjugate', 'denominator', 'from_bytes', 'imag', 'numerator', 'real', 'to_bytes']
+# >>> dir([])
+# ['__add__', '__class__', '__contains__', '__delattr__', '__delitem__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__iadd__', '__imul__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__reversed__', '__rmul__', '__setattr__', '__setitem__', '__sizeof__', '__str__', '__subclasshook__', 'append', 'clear', 'copy', 'count', 'extend', 'index', 'insert', 'pop', 'remove', 'reverse', 'sort']
+# >>> dir({})
+# ['__class__', '__contains__', '__delattr__', '__delitem__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__reversed__', '__setattr__', '__setitem__', '__sizeof__', '__str__', '__subclasshook__', 'clear', 'copy', 'fromkeys', 'get', 'items', 'keys', 'pop', 'popitem', 'setdefault', 'update', 'values']
+
+# ___method___ -> special method that used by internal python built in
+
+help("") # to read how to use all the method of class str in module builtin
+# Help on class str in module builtins:
+
+# class str(object)
+#  |  str(object='') -> str
+#  |  str(bytes_or_buffer[, encoding[, errors]]) -> str
+#  |
+#  |  Create a new string object from the given object. If encoding or
+#  |  errors is specified, then the object must expose a data buffer
+#  |  that will be decoded using the given encoding and error handler.
+#  |  Otherwise, returns the result of object.__str__() (if defined)
+#  |  or repr(object).
+#  |  encoding defaults to sys.getdefaultencoding().
+#  |  errors defaults to 'strict'.
+#  |
+#  |  Methods defined here:
+#  |
+#  |  __add__(self, value, /)
+#  |      Return self+value.
+#  |
+#  |  __contains__(self, key, /)
+#  |      Return key in self.
+#  |
+#  |  __eq__(self, value, /)
+#  |      Return self==value.
+#  |
+#  |  __format__(self, format_spec, /)
+#  |      Return a formatted version of the string as described by format_spec.
+#  |
+#  |  __ge__(self, value, /)
+#  |      Return self>=value.
+#  |
+#  |  __getattribute__(self, name, /)
+#  |      Return getattr(self, name).
+#  |
+#  |  __getitem__(self, key, /)
+#  |      Return self[key].
+#  |
+#  |  __getnewargs__(...)
+#  |
+#  |  __gt__(self, value, /)
+#  |      Return self>value.
+#  |
+#  |  __hash__(self, /)
+#  |      Return hash(self).
+#  |
+#  |  __iter__(self, /)
+#  |      Implement iter(self).
+#  |
+#  |  __le__(self, value, /)
+#  |      Return self<=value.
+#  |
+#  |  __len__(self, /)
+#  |      Return len(self).
+#  |
+#  |  __lt__(self, value, /)
+#  |      Return self<value.
+#  |
+#  |  __mod__(self, value, /)
+#  |      Return self%value.
+#  |
+#  |  __mul__(self, value, /)
+#  |      Return self*value.
+#  |
+#  |  __ne__(self, value, /)
+#  |      Return self!=value.
+#  |
+#  |  __repr__(self, /)
+#  |      Return repr(self).
+#  |
+#  |  __rmod__(self, value, /)
+#  |      Return value%self.
+#  |
+#  |  __rmul__(self, value, /)
+#  |      Return value*self.
+#  |
+#  |  __sizeof__(self, /)
+#  |      Return the size of the string in memory, in bytes.
+#  |
+#  |  __str__(self, /)
+#  |      Return str(self).
+#  |
+#  |  capitalize(self, /)
+#  |      Return a capitalized version of the string.
+#  |
+#  |      More specifically, make the first character have upper case and the rest lower
+#  |      case.
+#  |
+#  |  casefold(self, /)
+#  |      Return a version of the string suitable for caseless comparisons.
+#  |
+#  |  center(self, width, fillchar=' ', /)
+#  |      Return a centered string of length width.
+#  |
+#  |      Padding is done using the specified fill character (default is a space).
+#  |
+#  |  count(...)
+#  |      S.count(sub[, start[, end]]) -> int
+#  |
+#  |      Return the number of non-overlapping occurrences of substring sub in
+#  |      string S[start:end].  Optional arguments start and end are
+#  |      interpreted as in slice notation.
+#  |
+#  |  encode(self, /, encoding='utf-8', errors='strict')
+#  |      Encode the string using the codec registered for encoding.
+#  |
+#  |      encoding
+#  |        The encoding in which to encode the string.
+#  |      errors
+#  |        The error handling scheme to use for encoding errors.
+#  |        The default is 'strict' meaning that encoding errors raise a
+#  |        UnicodeEncodeError.  Other possible values are 'ignore', 'replace' and
+#  |        'xmlcharrefreplace' as well as any other name registered with
+#  |        codecs.register_error that can handle UnicodeEncodeErrors.
+#  |
+#  |  endswith(...)
+#  |      S.endswith(suffix[, start[, end]]) -> bool
+#  |
+#  |      Return True if S ends with the specified suffix, False otherwise.
+#  |      With optional start, test S beginning at that position.
+#  |      With optional end, stop comparing S at that position.
+#  |      suffix can also be a tuple of strings to try.
+#  |
+#  |  expandtabs(self, /, tabsize=8)
+#  |      Return a copy where all tab characters are expanded using spaces.
+#  |
+#  |      If tabsize is not given, a tab size of 8 characters is assumed.
+#  |
+#  |  find(...)
+#  |      S.find(sub[, start[, end]]) -> int
+#  |
+#  |      Return the lowest index in S where substring sub is found,
+#  |      such that sub is contained within S[start:end].  Optional
+#  |      arguments start and end are interpreted as in slice notation.
+#  |
+#  |      Return -1 on failure.
+#  |
+#  |  format(...)
+#  |      S.format(*args, **kwargs) -> str
+#  |
+#  |      Return a formatted version of S, using substitutions from args and kwargs.
+#  |      The substitutions are identified by braces ('{' and '}').
+#  |
+#  |  format_map(...)
+#  |      S.format_map(mapping) -> str
+#  |
+#  |      Return a formatted version of S, using substitutions from mapping.
+#  |      The substitutions are identified by braces ('{' and '}').
+#  |
+#  |  index(...)
+#  |      S.index(sub[, start[, end]]) -> int
+#  |
+#  |      Return the lowest index in S where substring sub is found,
+#  |      such that sub is contained within S[start:end].  Optional
+#  |      arguments start and end are interpreted as in slice notation.
+#  |
+#  |      Raises ValueError when the substring is not found.
+#  |
+#  |  isalnum(self, /)
+#  |      Return True if the string is an alpha-numeric string, False otherwise.
+#  |
+#  |      A string is alpha-numeric if all characters in the string are alpha-numeric and
+#  |      there is at least one character in the string.
+#  |
+#  |  isalpha(self, /)
+#  |      Return True if the string is an alphabetic string, False otherwise.
+#  |
+#  |      A string is alphabetic if all characters in the string are alphabetic and there
+#  |      is at least one character in the string.
+#  |
+#  |  isascii(self, /)
+#  |      Return True if all characters in the string are ASCII, False otherwise.
+#  |
+#  |      ASCII characters have code points in the range U+0000-U+007F.
+#  |      Empty string is ASCII too.
+#  |
+#  |  isdecimal(self, /)
+#  |      Return True if the string is a decimal string, False otherwise.
+#  |
+#  |      A string is a decimal string if all characters in the string are decimal and
+#  |      there is at least one character in the string.
+#  |
+#  |  isdigit(self, /)
+#  |      Return True if the string is a digit string, False otherwise.
+#  |
+#  |      A string is a digit string if all characters in the string are digits and there
+#  |      is at least one character in the string.
+#  |
+#  |  isidentifier(self, /)
+#  |      Return True if the string is a valid Python identifier, False otherwise.
+#  |
+#  |      Call keyword.iskeyword(s) to test whether string s is a reserved identifier,
+#  |      such as "def" or "class".
+#  |
+#  |  islower(self, /)
+#  |      Return True if the string is a lowercase string, False otherwise.
+#  |
+#  |      A string is lowercase if all cased characters in the string are lowercase and
+#  |      there is at least one cased character in the string.
+#  |
+#  |  isnumeric(self, /)
+#  |      Return True if the string is a numeric string, False otherwise.
+#  |
+#  |      A string is numeric if all characters in the string are numeric and there is at
+#  |      least one character in the string.
+#  |
+#  |  isprintable(self, /)
+#  |      Return True if the string is printable, False otherwise.
+#  |
+#  |      A string is printable if all of its characters are considered printable in
+#  |      repr() or if it is empty.
+#  |
+#  |  isspace(self, /)
+#  |      Return True if the string is a whitespace string, False otherwise.
+#  |
+#  |      A string is whitespace if all characters in the string are whitespace and there
+#  |      is at least one character in the string.
+#  |
+#  |  istitle(self, /)
+#  |      Return True if the string is a title-cased string, False otherwise.
+#  |
+#  |      In a title-cased string, upper- and title-case characters may only
+#  |      follow uncased characters and lowercase characters only cased ones.
+#  |
+#  |  isupper(self, /)
+#  |      Return True if the string is an uppercase string, False otherwise.
+#  |
+#  |      A string is uppercase if all cased characters in the string are uppercase and
+#  |      there is at least one cased character in the string.
+#  |
+#  |  join(self, iterable, /)
+#  |      Concatenate any number of strings.
+#  |
+#  |      The string whose method is called is inserted in between each given string.
+#  |      The result is returned as a new string.
+#  |
+#  |      Example: '.'.join(['ab', 'pq', 'rs']) -> 'ab.pq.rs'
+#  |
+#  |  ljust(self, width, fillchar=' ', /)
+#  |      Return a left-justified string of length width.
+#  |
+#  |      Padding is done using the specified fill character (default is a space).
+#  |
+#  |  lower(self, /)
+#  |      Return a copy of the string converted to lowercase.
+#  |
+#  |  lstrip(self, chars=None, /)
+#  |      Return a copy of the string with leading whitespace removed.
+#  |
+#  |      If chars is given and not None, remove characters in chars instead.
+#  |
+#  |  partition(self, sep, /)
+#  |      Partition the string into three parts using the given separator.
+#  |
+#  |      This will search for the separator in the string.  If the separator is found,
+#  |      returns a 3-tuple containing the part before the separator, the separator
+#  |      itself, and the part after it.
+#  |
+#  |      If the separator is not found, returns a 3-tuple containing the original string
+#  |      and two empty strings.
+#  |
+#  |  replace(self, old, new, count=-1, /)
+#  |      Return a copy with all occurrences of substring old replaced by new.
+#  |
+#  |        count
+#  |          Maximum number of occurrences to replace.
+#  |          -1 (the default value) means replace all occurrences.
+#  |
+#  |      If the optional argument count is given, only the first count occurrences are
+#  |      replaced.
+#  |
+#  |  rfind(...)
+#  |      S.rfind(sub[, start[, end]]) -> int
+#  |
+#  |      Return the highest index in S where substring sub is found,
+#  |      such that sub is contained within S[start:end].  Optional
+#  |      arguments start and end are interpreted as in slice notation.
+#  |
+#  |      Return -1 on failure.
+#  |
+#  |  rindex(...)
+#  |      S.rindex(sub[, start[, end]]) -> int
+#  |
+#  |      Return the highest index in S where substring sub is found,
+#  |      such that sub is contained within S[start:end].  Optional
+#  |      arguments start and end are interpreted as in slice notation.
+#  |
+#  |      Raises ValueError when the substring is not found.
+#  |
+#  |  rjust(self, width, fillchar=' ', /)
+#  |      Return a right-justified string of length width.
+#  |
+#  |      Padding is done using the specified fill character (default is a space).
+#  |
+#  |  rpartition(self, sep, /)
+#  |      Partition the string into three parts using the given separator.
+#  |
+#  |      This will search for the separator in the string, starting at the end. If
+#  |      the separator is found, returns a 3-tuple containing the part before the
+#  |      separator, the separator itself, and the part after it.
+#  |
+#  |      If the separator is not found, returns a 3-tuple containing two empty strings
+#  |      and the original string.
+#  |
+#  |  rsplit(self, /, sep=None, maxsplit=-1)
+#  |      Return a list of the words in the string, using sep as the delimiter string.
+#  |
+#  |        sep
+#  |          The delimiter according which to split the string.
+#  |          None (the default value) means split according to any whitespace,
+#  |          and discard empty strings from the result.
+#  |        maxsplit
+#  |          Maximum number of splits to do.
+#  |          -1 (the default value) means no limit.
+#  |
+#  |      Splits are done starting at the end of the string and working to the front.
+#  |
+#  |  rstrip(self, chars=None, /)
+#  |      Return a copy of the string with trailing whitespace removed.
+#  |
+#  |      If chars is given and not None, remove characters in chars instead.
+#  |
+#  |  split(self, /, sep=None, maxsplit=-1)
+#  |      Return a list of the words in the string, using sep as the delimiter string.
+#  |
+#  |      sep
+#  |        The delimiter according which to split the string.
+#  |        None (the default value) means split according to any whitespace,
+#  |        and discard empty strings from the result.
+#  |      maxsplit
+#  |        Maximum number of splits to do.
+#  |        -1 (the default value) means no limit.
+#  |
+#  |  splitlines(self, /, keepends=False)
+#  |      Return a list of the lines in the string, breaking at line boundaries.
+#  |
+#  |      Line breaks are not included in the resulting list unless keepends is given and
+#  |      true.
+#  |
+#  |  startswith(...)
+#  |      S.startswith(prefix[, start[, end]]) -> bool
+#  |
+#  |      Return True if S starts with the specified prefix, False otherwise.
+#  |      With optional start, test S beginning at that position.
+#  |      With optional end, stop comparing S at that position.
+#  |      prefix can also be a tuple of strings to try.
+#  |
+#  |  strip(self, chars=None, /)
+#  |      Return a copy of the string with leading and trailing whitespace removed.
+#  |
+#  |      If chars is given and not None, remove characters in chars instead.
+#  |
+#  |  swapcase(self, /)
+#  |      Convert uppercase characters to lowercase and lowercase characters to uppercase.
+#  |
+#  |  title(self, /)
+#  |      Return a version of the string where each word is titlecased.
+#  |
+#  |      More specifically, words start with uppercased characters and all remaining
+#  |      cased characters have lower case.
+#  |
+#  |  translate(self, table, /)
+#  |      Replace each character in the string using the given translation table.
+#  |
+#  |        table
+#  |          Translation table, which must be a mapping of Unicode ordinals to
+#  |          Unicode ordinals, strings, or None.
+#  |
+#  |      The table must implement lookup/indexing via __getitem__, for instance a
+#  |      dictionary or list.  If this operation raises LookupError, the character is
+#  |      left untouched.  Characters mapped to None are deleted.
+#  |
+#  |  upper(self, /)
+#  |      Return a copy of the string converted to uppercase.
+#  |
+#  |  zfill(self, width, /)
+#  |      Pad a numeric string with zeros on the left, to fill a field of the given width.
+#  |
+#  |      The string is never truncated.
+#  |
+#  |  ----------------------------------------------------------------------
+#  |  Static methods defined here:
+#  |
+#  |  __new__(*args, **kwargs) from builtins.type
+#  |      Create and return a new object.  See help(type) for accurate signature.
+#  |
+#  |  maketrans(...)
+#  |      Return a translation table usable for str.translate().
+#  |
+#  |      If there is only one argument, it must be a dictionary mapping Unicode
+#  |      ordinals (integers) or characters to Unicode ordinals, strings or None.
+#  |      Character keys will be then converted to ordinals.
+#  |      If there are two arguments, they must be strings of equal length, and
+#  |      in the resulting dictionary, each character in x will be mapped to the
+#  |      character at the same position in y. If there is a third argument, it
+#  |      must be a string, whose characters will be mapped to None in the result.
+
+# Defining New Classes
+
+class Apple:
+    pass # to show the body of the class is empty
+
+# Defining Attributes
+
+class Apple:
+    color = ""
+    flavor = ""
+
+# Create new Instance of class
+
+jonagold = Apple()
+jonagold.color = "Red"
+jonagold.flavor = "Sweet"
+print(jonagold.color, jonagold.flavor)
+
+# the expression to call class attribute is DOT NOTATION (___.___)
+
+print(jonagold.color.upper()) # RED
+
+# we can use other object attributes and method to our own
+
+golden = Apple()
+golden.color = "Yellow"
+golden.flavor = "Soft"
+
+# both jonagold and golden are the instances of Apple
+
+# Short Quiz
+
+class Flower:
+  color = 'unknown'
+
+rose = Flower()
+rose.color = "red"
+
+violet = Flower()
+violet.color = "blue"
+
+this_pun_is_for_you = "your mom has bed your father has hoe"
+
+print("Roses are {},".format(rose.color))
+print("violets are {},".format(violet.color))
+print(this_pun_is_for_you) 
+
+
+####################################################################################
+
+# Method of Class - For objects to perform actions, they need methods
+#                 - A method is a function that operates on a single instance of an object
+
+class Piglet:
+    # defining Method of Piglet's class
+    def speak(self):
+        print("oink oink")
+
+hamlet = Piglet()
+
+hamlet.speak() # oink oink
+
+class Piglet:
+    # attribute
+    name = "Piglet"
+    # method
+    def speak(self):
+        print("Oink! I'm {}! Oink!".format(self.name))
+
+hamlet = Piglet()
+hamlet.name = "Hamlet" # instace variable
+hamlet.speak() # oink oink
+
+
+# >>> class Piglet:
+# ...     # attribute
+# ...     name = "Piglet"
+# ...     # method
+# ...     def speak(self):
+# ...         print("Oink! I'm {}! Oink!".format(self.name))
+# ...
+# >>> hamlet = Piglet()
+# >>> hamlet.speak()
+# Oink! I'm Piglet! Oink!
+# >>> hamlet.name = "Hamlet"
+# >>> hamlet.speak()
+# Oink! I'm Hamlet! Oink!
+# >>>
+
+
+petunia = Piglet()
+petunia.name = "Petunia" # instance variable
+petunia.speak()
+
+# Returning Method
+
+class Piglet:
+    # attribute
+    years = 0
+    # method
+    def pig_years(self):
+        return self.years * 18
+
+piggy = Piglet()
+print(piggy.pig_years()) # 0
+
+piggy.years = 2
+print(piggy.pig_years()) # 36
+
+class Dog:
+  years = 0
+  def dog_years(self):
+    return self.years * 7
+    
+fido = Dog()
+fido.years = 3
+print(fido.dog_years())
+
+# Method: Constructor
+
+# defining constructor
+# -> explanation: the constructor of the class is the method that's called 
+#                 when you call the name of the class, it usually sets the attributes of instances right when it's created
+#                 It's always named __init__ (remember: method that have '__x__' is a special method)
+
+class Apple():
+    # constructor
+    def __init__(self, color, flavor):
+        self.color = color
+        self.flavor = flavor
+
+# calling/requesting a constructor by instanciates
+jonagold = Apple("red", "sweet")
+
+print(jonagold.color) # red
+print(jonagold.flavor) # sweet
+
+# Short Quiz
+
+class Person:
+    def __init__(self, name):
+        self.name = name
+    def greeting(self):
+        # Should return "hi, my name is " followed by the name of the Person.
+        return "hi, my name is {}".format(self.name)
+
+# Create a new instance with a name of your choice
+some_person = Person("Hazlan Muhammad Qodri")  
+# Call the greeting method
+print(some_person.greeting())
+
+some_person.name = "Kononawa"
+print(some_person.greeting())
+
+# special STR method in class syntax : __str__(self)
+
+class Apple:
+    # constructor
+    def __init__(self, color, flavor):
+        self.color = color
+        self.flavor = flavor
+    # special method
+    def __str__(self):
+        return "This apple is {} and its flavor is {}".format(self.color, self.flavor)
+
+golden_breeze = Apple("yellow", "Sweet")
+print(golden_breeze)
+
+# Special Methods
+# Instead of creating classes with empty or default values, we can set these values when we create the instance. This ensures that we don't miss an important value and avoids a lot of unnecessary lines of code. To do this, we use a special method called a constructor. Below is an example of an Apple class with a constructor method defined.
+
+# 4
+# >>> class Apple:
+# ...     def __init__(self, color, flavor):
+# ...         self.color = color
+# ...         self.flavor = flavor
+# When you call the name of a class, the constructor of that class is called. This constructor method is always named __init__. You might remember that special methods start and end with two underscore characters. In our example above, the constructor method takes the self variable, which represents the instance, as well as color and flavor parameters. These parameters are then used by the constructor method to set the values for the current instance. So we can now create a new instance of the Apple class and set the color and flavor values all in go:
+
+# 123
+# >>> jonagold = Apple("red", "sweet")
+# >>> print(jonagold.color)
+# Red
+# In addition to the __init__ constructor special method, there is also the __str__ special method. This method allows us to define how an instance of an object will be printed when it’s passed to the print() function. If an object doesn’t have this special method defined, it will wind up using the default representation, which will print the position of the object in memory. Not super useful. Here is our Apple class, with the __str__ method added:
+
+# 67
+# >>> class Apple:
+# ...     def __init__(self, color, flavor):
+# ...         self.color = color
+# ...         self.flavor = flavor
+# ...     def __str__(self):
+# ...         return "This apple is {} and its flavor is {}".format(self.color, self.flavor)
+# ...
+# Now, when we pass an Apple object to the print function, we get a nice formatted string:
+
+# 123
+# >>> jonagold = Apple("red", "sweet")
+# >>> print(jonagold)
+# This apple is red and its flavor is sweet
+# This apple is red and its flavor is sweet
+
+# It's good practice to think about how your class might be used and to define a __str__ method when creating objects that you may want to print later.
+
+
+class Apple:
+    def __init__(self, color, flavor):
+        self.color = color
+        self.flavor = flavor
+    
+    def __str__(self) -> str:
+        return "This apple is {} and its flavor is {}".format(self.color, self.flavor)
+
+help(Apple) # to show the detail inside of Apple class 
+
+# Docstring (Triple double quotes """""")
+# -> A brief text that explains what something does
+
+# example
+def to_string(hours, minutes, seconds):
+    """Return the amount of seconds in the given hours, minutes, and seconds""" # this is Docstring
+    return hours*3600+minutes*60+seconds
+
+help(to_string)
+
+class Piglet:
+    """Represent a piglet that can say their name."""
+    def __init__(self, years, name):
+        self.years = years
+        self.name = name
+    # Method Speak
+    def speak(self):
+        """Output a message including the name of the piglet."""
+        print("Oink! I'm {}! Oink!".format(self.name))
+    # Method Pig Years
+    def pig_years(self):
+        """Converts the current age to equivalent pig years."""
+        return self.years * 18
+
+
+# Short Quiz 
+
+class Person:
+  def __init__(self, name):
+    self.name = name
+  def greeting(self):
+    """Outputs a message with the name of the person"""
+    print("Hello! My name is {name}.".format(name = self.name)) 
+
+help(Person)
+
+#####################################################################################################
+
+# IPNYB | Jupyter Notebook | C1M5L2_Methods_and_Classes_V3
+
+class Elevator:
+    def __init__(self, bottom, top, current):
+        """Initializes the Elevator instance."""
+        self.bottom = bottom
+        self.top = top
+        self.current = current
+    def up(self):
+        """Makes the elevator go up one floor."""
+        self.current += 1
+    def down(self):
+        """Makes the elevator go down one floor."""
+        self.current -= 1
+    def go_to(self, floor):
+        """Makes the elevator go to the specific floor."""
+        self.current = floor
+
+elevator = Elevator(-1, 10, 0)
+
+elevator.up() 
+elevator.current #should output 1
+
+# -> 1
+
+elevator.down() 
+elevator.current #should output 0
+
+# -> 0
+
+elevator.go_to(10) 
+elevator.current #should output 10
+
+# -> 10
+
+# #If you get a NameError message, be sure to run the Elevator class definition code block first. If you get an AttributeError message, be sure to initialize self.current in your Elevator class.
+
+# Once you've made the above methods output 1, 0 and 10, you've successfully coded the Elevator class and its methods. Great work!
+
+# For the up and down methods, did you take into account the top and bottom floors? Keep in mind that the elevator shouldn't go above the top floor or below the bottom floor. To check that out, try the code below and verify if it's working as expected. If it's not, then go back and modify the methods so that this code behaves correctly.
+
+class Elevator:
+    def __init__(self, bottom, top, current):
+        """Initializes the Elevator instance."""
+        self.bottom = 0
+        self.top = 10
+        self.current = current
+    def up(self):
+        """Makes the elevator go up one floor."""
+        if self.current < self.top:
+            self.current += 1
+    def down(self):
+        """Makes the elevator go down one floor."""
+        if self.current > self.bottom:
+            self.current -= 1
+    def go_to(self, floor):
+        """Makes the elevator go to the specific floor."""
+        self.current = floor
+
+elevator = Elevator(-1, 10, 0)
+
+# Go to the top floor. Try to go up, it should stay. Then go down.
+elevator.go_to(10)
+elevator.up()
+elevator.down()
+print(elevator.current) # should be 9
+# Go to the bottom floor. Try to go down, it should stay. Then go up.
+elevator.go_to(-1)
+elevator.down()
+elevator.down()
+elevator.up()
+elevator.up()
+print(elevator.current) # should be 1
+
+# -> 9
+# -> 1
+
+# Now add the str method to your Elevator class definition above so that when printing the elevator using the print( ) method, we get the current floor together with a message. For example, in the 5th floor it should say "Current floor: 5"
+
+# Remember, Python uses the default method, that prints the position where the object is stored in the computer’s memory. If your output is something like:
+
+# <main.Elevator object at 0x7ff6a9ff3fd0>
+
+# Then you will need to add the special str method, which returns the string that you want to print. Try again until you get the desired output, "Current floor: 5".
+
+# Once you have successfully produced the desired output, you are all done with this practice notebook. Awesome!
+
+class Elevator:
+    def __init__(self, bottom, top, current):
+        """Initializes the Elevator instance."""
+        self.bottom = 0
+        self.top = 10
+        self.current = current
+    def __str__(self):
+        return "Current floor: {}".format(self.current)
+    def up(self):
+        """Makes the elevator go up one floor."""
+        if self.current < self.top:
+            self.current += 1
+    def down(self):
+        """Makes the elevator go down one floor."""
+        if self.current > self.bottom:
+            self.current -= 1
+    def go_to(self, current):
+        """Makes the elevator go to the specific floor."""
+        self.current = current
+
+
+elevator = Elevator(-1, 10, 0)
+
+elevator.go_to(5)
+print(elevator)
+
+# -> Current floor: 5
+
+######################## OOP - Code Reuse 
+
+# Inheritance
+
+class Fruit: # Parent Class
+    def __init__(self, color, flavor) -> None:
+        self.color = color
+        self.flavor = flavor
+
+class Apple(Fruit): # Child Class
+    pass
+
+class Grape(Fruit): # Child Class
+    pass
+
+# an Instance of Apple Class
+granny_smith = Apple("green", "tart")
+
+# an Instance of Grape Class
+carnelian = Grape("purple", "sweet")
+
+print(granny_smith.flavor) # tart
+print(carnelian.color) # purple
+
+###### another example - animal class
+
+# Base Class
+class Animal:
+    sound = ""
+    def __init__(self, name) -> None:
+        self.name = name
+    def speak(self):
+        print("{sound} I'm {name}! {sound}!".format(name = self.name, sound = self.sound))
+
+# Inherit Class of Animal - Piglet
+class Piglet(Animal):
+    sound = "Oink"
+
+# Instance of the child class
+hamlet = Piglet("Hamlet")
+hamlet.speak()
+
+# Inherited Class of Animal - Cow
+class Cow(Animal):
+    sound = "Moooooooooooo"
+
+# Instance of the child class
+milky = Cow("Milky Whitey")
+milky.speak()
+
+# Short Quiz
+# Let’s create a new class together and inherit from it. Below we have a base class called Clothing. Together, let’s create a second class, called Shirt, that inherits methods from the Clothing class. Fill in the blanks to make it work properly.
+
+class Clothing:
+  material = ""
+  def __init__(self, name):
+    self.name = name
+  def checkmaterial(self):
+	  print("This {} is made of {}".format(self.name,self.material))
+			
+class Shirt(Clothing):
+  material="Cotton"
+
+polo = Shirt("Polo")
+polo.checkmaterial()
+
+# Here is your output:
+# This Polo is made of Cotton
+
+# Nice work! You used the existing Clothing class to make a
+# Shirt class that inherited from it!
+
+# Inheritance lets you reuse code written for one class in other classes.
+
+###
+
+# Composition - The class contains info about other class, but this is not Inherited Class
+#             - We gonna use other class method to other class 
+
+class Repository:
+    def __init__(self) -> None:
+        self.packages = {} # Dict
+    # Method to add packages to repository
+    def add_package(self, package):
+        self.packages[package.name] = package
+    # Method to remove packages 
+    def remove_package(self, package):
+        del self.packages[package.name]
+    # Calculate the total size of packages in repository
+    def total_size(self):
+        result = 0
+        for package in self.packages.value():
+            result += package.size
+        return result
+
+# Let’s expand a bit on our Clothing classes from the previous in-video question. Your mission: Finish the "Stock_by_Material" method and iterate over the amount of each item of a given material that is in stock. When you’re finished, the script should add up to 10 cotton Polo shirts.
+
+# Parent Class
+class Clothing:
+    # Defining Parent Attributes
+    # Stock will gonna be dict to store all the info 
+    stock = { 'name': [], 'material': [], 'amount': [] }
+    # constructor
+    def __init__(self, name) -> None:
+        material = ""
+        self.name = name
+    # Method add element to each list in stock dict
+    def add_items(self, name, material, amount):
+        Clothing.stock['name'].append(self.name)
+        Clothing.stock['material'].append(self.material)
+        Clothing.stock['amount'].append(amount)
+    # Method to total stock by material 
+    def Stock_by_material(self, material):
+        # Define 'result' to store the total value of amount based on material
+        result = 0
+        # Define 'n' to helping iterate through list amount in stock dict
+        n = 0
+        for item in Clothing.stock['material']:
+            # If item same as the material which searched on, then add the amount values
+            if item == material:
+                # Do this
+                result += Clothing.stock['amount'][n]
+                n += 1
+        return result
+
+# Inherit Class Clothing to various clothing type, like Shirt or Pants
+
+# Shirt Class
+class Shirt(Clothing):
+    material = "Cotton"
+
+# Pant Class
+class Pants(Clothing):
+    material = "Cotton"
+
+
+# Create Instance of Inherit Class
+polo = Shirt("Polo")
+sweatpants = Pants("Sweatpants")
+polo.add_items(polo.name, polo.material, 10)
+
+sweatpants.add_items(sweatpants.name, sweatpants.material, 15)
+
+Current_Stock = sweatpants.Stock_by_material("Cotton")
+
+print(Current_Stock)
+
+
+### Python Modules
+
+import random as rd
+rd.randint(1, 10) # random number between 1 - 10
+rd.randint(1, 100) # random number between 1 - 100
+rd.randint(1, 1000) # random number between 1 - 1000
+
+import datetime as dt
+# print the current date
+now = dt.datetime.now()
+type(now) # <class 'datetime.datetime'> first datetime is a module, second datetime is a class of datetime module
+print(now)
+
+# timedelta - datetime classes
+print(now + dt.timedelta(days = 28))
